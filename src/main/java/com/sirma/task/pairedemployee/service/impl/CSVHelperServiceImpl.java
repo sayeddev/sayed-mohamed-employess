@@ -12,6 +12,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -30,7 +31,7 @@ public class CSVHelperServiceImpl implements CSVHelperService {
         try {
             Resource resource = resourceLoader.getResource("classpath:" + fileName);
             InputStream inputStream = resource.getInputStream();
-            Reader reader = new InputStreamReader(inputStream);
+            Reader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             return parseCSV(reader);
         } catch (Exception ex) {
             log.error("Failure in parsing file ", ex);
@@ -49,7 +50,7 @@ public class CSVHelperServiceImpl implements CSVHelperService {
     @Override
     public List<EmployeeProject> loadEmployeeProjects(MultipartFile file) {
         try {
-            Reader reader = new InputStreamReader(file.getInputStream());
+            Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream(), "UTF-8"));
             return parseCSV(reader);
         } catch (Exception ex) {
             log.error("Failure in parsing file ", ex);
