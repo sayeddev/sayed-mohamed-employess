@@ -66,4 +66,9 @@ public class EmployeeProjectServiceImpl implements EmployeeProjectService {
         log.info(objectMapper.writeValueAsString(pairedEmployees));
     }
 
+    @Override
+    public void deleteEmployeesData() {
+        repository.deleteAll();
+    }
+
 }

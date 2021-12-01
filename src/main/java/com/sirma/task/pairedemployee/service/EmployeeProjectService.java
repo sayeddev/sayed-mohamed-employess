@@ -18,4 +18,6 @@ public interface EmployeeProjectService {
     List<PairedEmployeesDto> getPairedEmployees() throws JsonProcessingException;
 
     void printPairedEmployees() throws JsonProcessingException;
+
+    void deleteEmployeesData();
 }

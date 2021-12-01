@@ -24,7 +24,7 @@ public interface EmployeeProjectRepository extends JpaRepository<EmployeeProject
             "                FROM     employee_project e1\n" +
             "                JOIN     employee_project e2\n" +
             "                ON       e1.project_id = e2.project_id\n" +
-            "                AND      e1.employee_id < e2.employee_id\n" +
+            "                AND      e1.employee_id > e2.employee_id\n" +
             "\n" +
             "                GROUP BY e1.employee_id,\n" +
             "                         e2.employee_id\n" +
